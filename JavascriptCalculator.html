@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+
+	<style type="text/css">
+
+		h3 {
+			text-align: center;
+			color: purple;
+		}
+
+		#calculator-body {
+			background-color: purple;
+			width: 210px;
+			height: 300px;
+			border: 1px solid purple;
+			padding: 0 5px;
+			margin: 0 auto;
+		}
+
+		#toDisplay {
+			margin-bottom: 5px;
+			margin-top: 10px;
+			height: 60px;
+			width: 10em;
+			border: 1px solid purple;
+			box-shadow: 0 0 1px 1px purple;
+			text-align: right;
+			font-size: 20px;
+			font-weight: bold;
+			padding: 5px 5px 0 0;
+		}
+
+		#keys {
+			margin: 4px;
+			font-weight: bold;
+			width:41px;
+			height:35px;
+			box-shadow: 0 0 2px 1px purple;
+			outline: none;
+		}
+
+	</style>
+</head>
+<body>
+	<h3>Simple Javascript Calculator</h3>
+	<div id="calculator-body">
+		<form>
+			<input type='text' name='' id='toDisplay' disabled>
+			<br>
+				<input type='button' value='C' id='keys' onclick='display("c")'>
+				<input type='button' value='CE' id='keys' onclick='backspace()'>
+				<input type='button' value='x^2' id='keys' onclick='square()'>
+				<input type='button' value='+' id='keys' onclick='display("+")'>
+				<br>
+
+				<input type='button' value='7' id='keys' onclick='display("7")'>
+				<input type='button' value='8' id='keys' onclick='display("8")'>
+				<input type='button' value='9' id='keys' onclick='display("9")'>
+				<input type='button' value='-' id='keys' onclick='display("-")'>
+				<br>
+
+				<input type='button' value='4' id='keys' onclick='display("4")'>
+				<input type='button' value='5' id='keys' onclick='display("5")'>
+				<input type='button' value='6' id='keys' onclick='display("6")'>
+				<input type='button' value='*' id='keys' onclick='display("*")'>
+				<br>
+
+				<input type='button' value='1' id='keys' onclick='display("1")'>
+				<input type='button' value='2' id='keys' onclick='display("2")'>
+				<input type='button' value='3' id='keys' onclick='display("3")'>
+				<input type='button' value='/' id='keys' onclick='display("/")'>
+				<br>
+
+				<input type='button' value='x^y' id='keys' onclick='display("**")'>
+				<input type='button' value='0' id='keys' onclick='display("0")'>
+				<input type='button' value='.' id='keys' onclick='display(".")'>
+				<input type='button' value='=' id='keys' onclick='answer()'>
+		</form>	
+	</div>
+
+	<script type="text/javascript">
+		let box = document.getElementById('toDisplay');
+
+		function display(x){
+			if( box.value.length === 14){
+				box.value += '';
+			} else if(x === 'c'){
+				box.value = '';
+			} else {
+				box.value += x;
+			}
+		}
+
+		function square(){
+			x = box.value;
+			x = eval(x * x);
+			box.value = x;
+		}
+
+		function backspace(){
+			let x = box.value;
+			let length = x.length-1;
+			let y = x.substring(0, length);
+			box.value = y;
+		}
+
+		function answer(){
+			x = box.value;
+			x = eval(x);
+			box.value = x;
+		}
+	</script>
+</body>
+</html>
